@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crumbs Bakery</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #fff8f0; color: #333; margin: 0; padding: 0; }
+    header, footer { background-color: #e2b8a3; padding: 20px; text-align: center; }
+    nav a { margin: 0 15px; color: #fff; text-decoration: none; }
+    section { padding: 20px; }
+    .product { margin-bottom: 20px; }
+    .form-section { background-color: #fef2e4; padding: 20px; border-radius: 10px; }
+    .form-section input, .form-section select, .form-section textarea { display: block; margin-bottom: 10px; width: 100%; padding: 10px; }
+    .form-section label { font-weight: bold; margin-top: 10px; display: block; }
+  </style>
+  <script>
+    function calculateTotal() {
+      const size = document.getElementById("size").value;
+      const decorations = document.getElementById("decorations").value;
+
+      let sizeCost = 0;
+      let decoCost = 0;
+
+      if (size === "small") sizeCost = 10;
+      if (size === "medium") sizeCost = 15;
+      if (size === "large") sizeCost = 20;
+
+      if (decorations === "birthday") decoCost = 4;
+
+      const total = sizeCost + decoCost;
+      const totalCostElement = document.getElementById("totalCost");
+      totalCostElement.textContent = (size || decorations) ? `Total Cost: £${total.toFixed(2)}` : "Total Cost: ";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Crumbs Bakery</h1>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="#custom">Custom Cake</a>
+      <a href="#order">Order</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="products">
+    <h2>Our Products</h2>
+    <div class="product">
+      <h3>Black Forest Cake</h3>
+      <img src="black-forest.jpg" alt="Black Forest Cake" width="200">
+      <p>Rich chocolate sponge layered with whipped cream and cherries - £15.99</p>
+    </div>
+    <div class="product">
+      <h3>Chocolate Cake</h3>
+      <img src="chocolate-cake.jpg" alt="Chocolate Cake" width="200">
+      <p>Decadent dark chocolate layers with chocolate ganache - £13.99</p>
+    </div>
+    <div class="product">
+      <h3>Lemon Cake</h3>
+      <img src="lemon-cake.jpg" alt="Lemon Cake" width="200">
+      <p>Light and zesty lemon sponge topped with lemon glaze - £12.99</p>
+    </div>
+    <div class="product">
+      <h3>Cheesecake</h3>
+      <img src="cheescake.jpg" alt="Cheesecake" width="200">
+      <p>Creamy baked cheesecake with a biscuit base - £14.99</p>
+    </div>
+    <div class="product">
+      <h3>Scones</h3>
+      <img src="scones.jpg" alt="Scones" width="200">
+      <p>Traditional buttery scones, perfect with cream and jam - £4.50 (4 pcs)</p>
+    </div>
+    <div class="product">
+      <h3>Doughnuts</h3>
+      <img src="doughnuts.jpg" alt="Doughnuts" width="200">
+      <p>Fluffy, sugar-dusted doughnuts with assorted fillings - £5.00 (3 pcs)</p>
+    </div>
+    <h3>Customer Reviews</h3>
+    <p>"The Black Forest Cake was delicious and fresh!" – Sarah</p>
+    <p>"I love the cheesecake – it's the best I've ever had!" – Tom</p>
+  </section>
+
+  <section id="custom">
+    <h2>Customise Your Cake</h2>
+    <form oninput="calculateTotal()">
+      <label for="size">Cake Size</label>
+      <select id="size" name="size">
+        <option value="">Select Size</option>
+        <option value="small">Small - £10</option>
+        <option value="medium">Medium - £15</option>
+        <option value="large">Large - £20</option>
+      </select>
+      <label for="flavour">Flavour</label>
+      <select id="flavour" name="flavour">
+        <option value="">Select Flavour</option>
+        <option value="chocolate">Chocolate</option>
+        <option value="lemon">Lemon</option>
+        <option value="vanilla">Vanilla</option>
+        <option value="red-velvet">Red Velvet</option>
+      </select>
+      <label for="decorations">Decorations</label>
+      <select id="decorations" name="decorations">
+        <option value="">Select Decoration</option>
+        <option value="none">None - £0</option>
+        <option value="birthday">Birthday (Name & Numbers) - £4</option>
+      </select>
+      <p id="totalCost">Total Cost: </p>
+    </form>
+  </section>
+
+  <section id="order" class="form-section">
+    <h2>Order or Inquiry Form</h2>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Your message or order:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      <label><input type="checkbox" name="optout"> I do not want to receive promotional emails</label>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Address:</strong> 99 New George St, Plymouth PL1 1RZ</p>
+    <p><strong>Email:</strong> crubs@gmail.com</p>
+    <p><strong>Phone:</strong> 07103782934</p>
+    <p><strong>Business Hours:</strong> Monday to Friday, 6 AM - 5 PM</p>
+    <p><a href="https://www.instagram.com/crumbsbakery447?igsh=N3dzZjdhZTR2MWk2" target="_blank">Follow us on Instagram</a></p>
+    <p><a href="https://www.bbcgoodfood.com/recipes/collection/easy-cake-recipes" target="_blank">Baking recipes from BBC Good Food</a></p>
+    <p><a href="https://wheelofbaking.com/baking-101-baking-tips-for-beginners/" target="_blank">Baking Tips from Wheel of Baking</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Crumbs Bakery. All rights reserved.</p>
+  </footer>
+</body>
+</html>
